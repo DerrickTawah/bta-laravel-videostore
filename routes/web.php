@@ -21,6 +21,7 @@ Route::post('/movie/store/{id?}', 'MovieController@store')->name('movie.store')-
 Route::get('/movie/delete/{id}', 'MovieController@delete')->name('movie.delete');
 
 Route::permanentRedirect('/','/movie');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LoginController@logout');
