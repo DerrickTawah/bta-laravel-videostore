@@ -6,6 +6,7 @@
             @foreach($list as $item)
                 <option value="{{ $item->id }}"
                     @if($data && $item->id === $data->$name) selected @endif>
+                    {{-- work's only if __toString() function is defined in Model class  --}}
                     {{ $item }}
                 </option>
             @endforeach

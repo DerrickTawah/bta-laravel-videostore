@@ -13,14 +13,8 @@
                         @include('components.form.fields.select', ['data' => $data, 'name' => 'author_id', 'list' => $authors])
                         @include('components.form.fields.text', ['data' => $data, 'name' => 'title'])
                         @include('components.form.fields.text', ['data' => $data, 'name' => 'price'])
+                        @include('components.form.fields.submit', ['label' => 'Submit'])
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-4 my-3">
-                                <button type="submit" class="btn btn-primary col-md-12">
-                                    {{ __('Save') }}
-                                </button>
-                            </div>
-                        </div>
                     </form>
 
                 </div>
