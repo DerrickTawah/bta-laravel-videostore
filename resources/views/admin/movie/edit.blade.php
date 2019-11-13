@@ -7,7 +7,7 @@
                 <div class="card-header row"><h3 class="my-0 py-0">@if($data)Edit {{ $data->title }}@else Create @endif </h3></div>
                 <div class="card-body row mt-3 p-0 justify-content-center">
 
-                    <form class="col-12" method="POST" action="{{ route('movie.store', ['id' => ($data) ? $data->id : null] ) }}">
+                    <form class="col-12" method="POST" action="{{ route('admin-movie.store', ['id' => ($data) ? $data->id : null] ) }}">
                         @csrf
 
                         <div class="form-group row">
