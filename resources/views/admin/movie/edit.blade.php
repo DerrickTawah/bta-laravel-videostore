@@ -10,25 +10,7 @@
                     <form class="col-12" method="POST" action="{{ route('admin-movie.store', ['id' => ($data) ? $data->id : null] ) }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="author_id" class="col-md-2 col-form-label">{{ __('Author') }}</label>
-                            <div class="col-md-10">
-                                <select class="col-md-12" id="author_id" name="author_id" class="form-control @error('author_id') is-invalid @enderror">
-                                    <option value="">Please Choose ...</option>
-                                    @foreach($authors as $author)
-                                        <option value="{{ $author->id }}"
-                                        @if($data && $author->id == $data->author_id) selected @endif>
-                                            {{ $author }} </option>
-                                    @endforeach
-                                </select>
-                                @error('author_id')
-                                <span class="d-block invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('author_id') }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
+                        @include('components.form.fields.select', ['data' => $data, 'name' => 'author_id', 'list' => $authors])
                         @include('components.form.fields.text', ['data' => $data, 'name' => 'title'])
                         @include('components.form.fields.text', ['data' => $data, 'name' => 'price'])
 
