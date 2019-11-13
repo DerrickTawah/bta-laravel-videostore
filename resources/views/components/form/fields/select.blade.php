@@ -1,19 +1,18 @@
 <div class="form-group row">
-    <label for="{{ $name }}" class="col-md-2 col-form-label">{{ __(ucfirst($name)) }}</label>
+    <label for="{{ $author_id }}" class="col-md-2 col-form-label">{{ __(ucfirst($author_id)) }}</label>
     <div class="col-md-10">
-        <select class="col-md-12" id="{{ $name }}" name="{{ $name }}" class="form-control @error($name) is-invalid @enderror">
-            <option value="">@lang('Please Choose ...')</option>
-            @foreach($list as $item)
-                <option value="{{ $item->id }}"
-                    @if($data && $item->id === $data->$name) selected @endif>
-                    {{ $item }}
-                </option>
+        <select class="col-md-12" id=""{{ $author_id }}" name="{{ $author_id }}" class="form-control @error($author_id) is-invalid @enderror">
+            <option value="">Please Choose ...</option>
+            @foreach($authors as $author)
+                <option value="{{ $author->id }}"
+                        @if($data && $author->id == $data->author_id) selected @endif>
+                    {{ $author }} </option>
             @endforeach
         </select>
-        @error($name)
+        @error($author_id)
         <span class="d-block invalid-feedback" role="alert">
-            <strong>{{ $errors->first($name) }}</strong>
-        </span>
+                                    <strong>{{ $errors->first('$author_id') }}</strong>
+                                </span>
         @enderror
     </div>
 </div>
