@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.4.1 on 2019-11-12 10:58:14.
+ * Generated for Laravel 6.4.1 on 2019-11-13 12:14:06.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -55,6 +55,7 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Contracts\Filesystem\Cloud;
     use Illuminate\Contracts\Filesystem\FileExistsException;
     use Illuminate\Contracts\Filesystem\FileNotFoundException;
+    use Illuminate\Contracts\Mail\Mailable;
     use Illuminate\Contracts\Queue\Job;
     use Illuminate\Contracts\Support\Arrayable;
     use Illuminate\Contracts\Translation\Loader;
@@ -84,6 +85,8 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Http\RedirectResponse;
     use Illuminate\Http\UploadedFile;
     use Illuminate\Log\LogManager;
+    use Illuminate\Mail\Mailer;
+    use Illuminate\Mail\PendingMail;
     use Illuminate\Notifications\ChannelManager;
     use Illuminate\Queue\QueueManager;
     use Illuminate\Queue\SyncQueue;
@@ -101,6 +104,7 @@ namespace Illuminate\Support\Facades {
     use Illuminate\Support\ServiceProvider;
     use Illuminate\Support\Testing\Fakes\BusFake;
     use Illuminate\Support\Testing\Fakes\EventFake;
+    use Illuminate\Support\Testing\Fakes\MailFake;
     use Illuminate\Support\Testing\Fakes\NotificationFake;
     use Illuminate\Support\Testing\Fakes\QueueFake;
     use Illuminate\Translation\MessageSelector;
@@ -122,6 +126,7 @@ namespace Illuminate\Support\Facades {
     use SessionHandlerInterface;
     use SplFileInfo;
     use stdClass;
+    use Swift_Mailer;
     use Symfony\Component\Console\Command\Command;
     use Symfony\Component\Console\Exception\CommandNotFoundException;
     use Symfony\Component\Console\Input\InputInterface;
@@ -6842,6 +6847,480 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var LogManager $instance */
                         $instance->log($level, $message, $context);
+        }
+         
+    }
+
+    /**
+     * 
+     *
+     * @see \Illuminate\Mail\Mailer
+     * @see \Illuminate\Support\Testing\Fakes\MailFake
+     */ 
+    class Mail {
+        
+        /**
+         * Set the global from address and name.
+         *
+         * @param string $address
+         * @param string|null $name
+         * @return void 
+         * @static 
+         */ 
+        public static function alwaysFrom($address, $name = null)
+        {
+                        /** @var Mailer $instance */
+                        $instance->alwaysFrom($address, $name);
+        }
+        
+        /**
+         * Set the global reply-to address and name.
+         *
+         * @param string $address
+         * @param string|null $name
+         * @return void 
+         * @static 
+         */ 
+        public static function alwaysReplyTo($address, $name = null)
+        {
+                        /** @var Mailer $instance */
+                        $instance->alwaysReplyTo($address, $name);
+        }
+        
+        /**
+         * Set the global to address and name.
+         *
+         * @param string $address
+         * @param string|null $name
+         * @return void 
+         * @static 
+         */ 
+        public static function alwaysTo($address, $name = null)
+        {
+                        /** @var Mailer $instance */
+                        $instance->alwaysTo($address, $name);
+        }
+        
+        /**
+         * Begin the process of mailing a mailable class instance.
+         *
+         * @param mixed $users
+         * @return PendingMail
+         * @static 
+         */ 
+        public static function to($users)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->to($users);
+        }
+        
+        /**
+         * Begin the process of mailing a mailable class instance.
+         *
+         * @param mixed $users
+         * @return PendingMail
+         * @static 
+         */ 
+        public static function cc($users)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->cc($users);
+        }
+        
+        /**
+         * Begin the process of mailing a mailable class instance.
+         *
+         * @param mixed $users
+         * @return PendingMail
+         * @static 
+         */ 
+        public static function bcc($users)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->bcc($users);
+        }
+        
+        /**
+         * Send a new message with only an HTML part.
+         *
+         * @param string $html
+         * @param mixed $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function html($html, $callback)
+        {
+                        /** @var Mailer $instance */
+                        $instance->html($html, $callback);
+        }
+        
+        /**
+         * Send a new message with only a raw text part.
+         *
+         * @param string $text
+         * @param mixed $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function raw($text, $callback)
+        {
+                        /** @var Mailer $instance */
+                        $instance->raw($text, $callback);
+        }
+        
+        /**
+         * Send a new message with only a plain part.
+         *
+         * @param string $view
+         * @param array $data
+         * @param mixed $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function plain($view, $data, $callback)
+        {
+                        /** @var Mailer $instance */
+                        $instance->plain($view, $data, $callback);
+        }
+        
+        /**
+         * Render the given message as a view.
+         *
+         * @param string|array $view
+         * @param array $data
+         * @return string 
+         * @static 
+         */ 
+        public static function render($view, $data = array())
+        {
+                        /** @var Mailer $instance */
+                        return $instance->render($view, $data);
+        }
+        
+        /**
+         * Send a new message using a view.
+         *
+         * @param Mailable|string|array $view
+         * @param array $data
+         * @param Closure|string|null $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function send($view, $data = array(), $callback = null)
+        {
+                        /** @var Mailer $instance */
+                        $instance->send($view, $data, $callback);
+        }
+        
+        /**
+         * Queue a new e-mail message for sending.
+         *
+         * @param Mailable $view
+         * @param string|null $queue
+         * @return mixed 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function queue($view, $queue = null)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->queue($view, $queue);
+        }
+        
+        /**
+         * Queue a new e-mail message for sending on the given queue.
+         *
+         * @param string $queue
+         * @param Mailable $view
+         * @return mixed 
+         * @static 
+         */ 
+        public static function onQueue($queue, $view)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->onQueue($queue, $view);
+        }
+        
+        /**
+         * Queue a new e-mail message for sending on the given queue.
+         * 
+         * This method didn't match rest of framework's "onQueue" phrasing. Added "onQueue".
+         *
+         * @param string $queue
+         * @param Mailable $view
+         * @return mixed 
+         * @static 
+         */ 
+        public static function queueOn($queue, $view)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->queueOn($queue, $view);
+        }
+        
+        /**
+         * Queue a new e-mail message for sending after (n) seconds.
+         *
+         * @param DateTimeInterface|DateInterval|int $delay
+         * @param Mailable $view
+         * @param string|null $queue
+         * @return mixed 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function later($delay, $view, $queue = null)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->later($delay, $view, $queue);
+        }
+        
+        /**
+         * Queue a new e-mail message for sending after (n) seconds on the given queue.
+         *
+         * @param string $queue
+         * @param DateTimeInterface|DateInterval|int $delay
+         * @param Mailable $view
+         * @return mixed 
+         * @static 
+         */ 
+        public static function laterOn($queue, $delay, $view)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->laterOn($queue, $delay, $view);
+        }
+        
+        /**
+         * Get the array of failed recipients.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function failures()
+        {
+                        /** @var Mailer $instance */
+                        return $instance->failures();
+        }
+        
+        /**
+         * Get the Swift Mailer instance.
+         *
+         * @return Swift_Mailer
+         * @static 
+         */ 
+        public static function getSwiftMailer()
+        {
+                        /** @var Mailer $instance */
+                        return $instance->getSwiftMailer();
+        }
+        
+        /**
+         * Get the view factory instance.
+         *
+         * @return \Illuminate\Contracts\View\Factory 
+         * @static 
+         */ 
+        public static function getViewFactory()
+        {
+                        /** @var Mailer $instance */
+                        return $instance->getViewFactory();
+        }
+        
+        /**
+         * Set the Swift Mailer instance.
+         *
+         * @param Swift_Mailer $swift
+         * @return void 
+         * @static 
+         */ 
+        public static function setSwiftMailer($swift)
+        {
+                        /** @var Mailer $instance */
+                        $instance->setSwiftMailer($swift);
+        }
+        
+        /**
+         * Set the queue manager instance.
+         *
+         * @param \Illuminate\Contracts\Queue\Factory $queue
+         * @return Mailer
+         * @static 
+         */ 
+        public static function setQueue($queue)
+        {
+                        /** @var Mailer $instance */
+                        return $instance->setQueue($queue);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        Mailer::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        Mailer::mixin($mixin, $replace);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return Mailer::hasMacro($name);
+        }
+        
+        /**
+         * Assert if a mailable was sent based on a truth-test callback.
+         *
+         * @param string $mailable
+         * @param callable|int|null $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function assertSent($mailable, $callback = null)
+        {
+                        /** @var MailFake $instance */
+                        $instance->assertSent($mailable, $callback);
+        }
+        
+        /**
+         * Determine if a mailable was not sent based on a truth-test callback.
+         *
+         * @param string $mailable
+         * @param callable|null $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNotSent($mailable, $callback = null)
+        {
+                        /** @var MailFake $instance */
+                        $instance->assertNotSent($mailable, $callback);
+        }
+        
+        /**
+         * Assert that no mailables were sent.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNothingSent()
+        {
+                        /** @var MailFake $instance */
+                        $instance->assertNothingSent();
+        }
+        
+        /**
+         * Assert if a mailable was queued based on a truth-test callback.
+         *
+         * @param string $mailable
+         * @param callable|int|null $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function assertQueued($mailable, $callback = null)
+        {
+                        /** @var MailFake $instance */
+                        $instance->assertQueued($mailable, $callback);
+        }
+        
+        /**
+         * Determine if a mailable was not queued based on a truth-test callback.
+         *
+         * @param string $mailable
+         * @param callable|null $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNotQueued($mailable, $callback = null)
+        {
+                        /** @var MailFake $instance */
+                        $instance->assertNotQueued($mailable, $callback);
+        }
+        
+        /**
+         * Assert that no mailables were queued.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNothingQueued()
+        {
+                        /** @var MailFake $instance */
+                        $instance->assertNothingQueued();
+        }
+        
+        /**
+         * Get all of the mailables matching a truth-test callback.
+         *
+         * @param string $mailable
+         * @param callable|null $callback
+         * @return Collection
+         * @static 
+         */ 
+        public static function sent($mailable, $callback = null)
+        {
+                        /** @var MailFake $instance */
+                        return $instance->sent($mailable, $callback);
+        }
+        
+        /**
+         * Determine if the given mailable has been sent.
+         *
+         * @param string $mailable
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasSent($mailable)
+        {
+                        /** @var MailFake $instance */
+                        return $instance->hasSent($mailable);
+        }
+        
+        /**
+         * Get all of the queued mailables matching a truth-test callback.
+         *
+         * @param string $mailable
+         * @param callable|null $callback
+         * @return Collection
+         * @static 
+         */ 
+        public static function queued($mailable, $callback = null)
+        {
+                        /** @var MailFake $instance */
+                        return $instance->queued($mailable, $callback);
+        }
+        
+        /**
+         * Determine if the given mailable has been queued.
+         *
+         * @param string $mailable
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasQueued($mailable)
+        {
+                        /** @var MailFake $instance */
+                        return $instance->hasQueued($mailable);
         }
          
     }
@@ -17399,6 +17878,8 @@ namespace  {
     class Lang extends \Illuminate\Support\Facades\Lang {}
 
     class Log extends \Illuminate\Support\Facades\Log {}
+
+    class Mail extends \Illuminate\Support\Facades\Mail {}
 
     class Notification extends \Illuminate\Support\Facades\Notification {}
 
