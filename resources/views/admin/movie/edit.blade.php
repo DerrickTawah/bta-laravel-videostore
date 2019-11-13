@@ -29,31 +29,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="title" class="col-md-2 col-form-label">{{ __('Title') }}</label>
-                            <div class="col-md-10">
-                                <input class="col-md-12 px-1" id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title"
-                                       value="@if($data){{ $data->title }}@endif">
-                                @error('title')
-                                <span class="d-block invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('title') }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="price" class="col-md-2 col-form-label">{{ __('Price') }}</label>
-                            <div class="col-md-10">
-                                <input class="col-md-12 px-1" id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price"
-                                       value="@if($data){{ $data->price }}@endif">
-                                @error('price')
-                                <span class="d-block invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('price') }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
+                        @include('components.form.fields.text', ['data' => $data, 'name' => 'title'])
+                        @include('components.form.fields.text', ['data' => $data, 'name' => 'price'])
 
                         <div class="form-group row mb-0">
                             <div class="col-md-4 my-3">
