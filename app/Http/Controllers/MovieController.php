@@ -9,7 +9,7 @@ use App\Http\Requests\MovieRequest;
 class MovieController extends Controller
 {
    public function index() {
-        $data = Movie::orderBy('title')->get();
+        $data = Movie::orderBy('title')->paginate(10);
         return view('public.movie.index', compact('data'));
    }
 
