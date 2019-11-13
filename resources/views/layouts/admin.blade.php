@@ -30,7 +30,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('movie.index') }}">{{ __('Movies') }}</a>
+                            <a class="nav-link" href="{{ route('admin-movie.index') }}">{{ __('Movies') }}</a>
                         </li>
                     </ul>
 
@@ -41,7 +41,7 @@
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user() }}<span class="caret"></span></a>
+                                {{ Auth::user()->name }}<span class="caret"></span></a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <!--form class="d-inline" method="post" action="{{ route('logout') }}">

@@ -38,12 +38,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-/*
+
     public function redirectTo()
     {
-        return env('/');
+        return env('APP_ADMIN_URL');
     }
-*/
+
     public function logout()
     {
         if(Auth::check()) {

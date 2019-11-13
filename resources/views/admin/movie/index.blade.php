@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -8,6 +8,9 @@
                     <div class="card-header row">
                         <div class="col">
                             {{ __('Movie') }}
+                        </div>
+                        <div class="col float-right text-right">
+                            <a class="btn btn-primary" role="button" href="{{ route('admin-movie.edit')  }}">Create New</a>
                         </div>
                     </div>
                     <div class="card-body row p-0 justify-content-center">
@@ -25,7 +28,7 @@
                                     <th class="d-none d-md-table-cell">Autor</th>
                                     <th class="d-none d-md-table-cell">€</th>
                                     <th class="d-none d-md-table-cell">Jahr</th>
-                                    <th>&nbsp&nbsp;</th>
+                                    <th colspan="3">&nbsp&nbsp;</th>
                                 </tr>
                             @foreach ($data as $item)
                                 <tr>
@@ -35,7 +38,11 @@
                                     <td class="d-none d-md-table-cell">{{ $item->price }} </td>
                                     <td class="d-none d-md-table-cell">{{ $item->created_at->format('Y') }}</td>
 
-                                    <td><a class="btn-sm btn-primary" href="{{ route('movie.show', ['id' => $item->id]) }}">Show</a></td>
+                                    <td><a class="btn-sm btn-primary" href="{{ route('admin-movie.show', ['id' => $item->id]) }}">Show</a></td>
+                                    <td><a class="btn-sm btn-primary" href="{{ route('admin-movie.edit', ['id' => $item->id]) }}">Edit</a></td>
+                                    <td><a class="btn-sm btn-primary softdel" href="{{ route('admin-movie.delete', ['id' => $item->id]) }}">
+                                            <i class="fas fa-trash d-inline d-md-none"></i>
+                                            <span class="d-lg-inline">Delete</span></a></td>
                                 </tr>
                             @endforeach
                             </table>
