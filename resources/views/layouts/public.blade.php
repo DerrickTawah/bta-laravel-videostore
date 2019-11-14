@@ -47,6 +47,13 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('scard.index') }}">
+                                <i class="d-inline-block float-right fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
+
                         <li class="nav-item spacer d-none d-md-inline-block">&nbsp;</li>
 
                         <li class="nav-item lang-switch">

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Movie;
-use App\Author;
+use App\Models\Movie;
+use App\Models\Author;
 use App\Http\Requests\MovieRequest;
 
 class AdminMovieController extends AdminController
@@ -27,6 +27,10 @@ class AdminMovieController extends AdminController
 
     public function store( MovieRequest $request, $id = null) {
         $validated = $request->validated();
+        // $path = $request->file('image')->store('images');
+//            $file = request()->file('image');
+//            $storage = Storage::disk('images')->putFileAs($file->getClientOriginalName(), $file);
+
         if( $id > 0 ) {
             Movie::whereId($id)->update($validated);
         } else {
