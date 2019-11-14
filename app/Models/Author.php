@@ -31,6 +31,7 @@ class Author extends Model
     protected $table = 'author';
     protected $fillable = ['firstname','lastname'];
     protected $appends = ['fullname'];
+
     /**
      * @return HasMany
      */
