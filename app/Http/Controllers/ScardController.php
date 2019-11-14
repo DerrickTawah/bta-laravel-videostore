@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
 /**
  * Class ScardController
  * @package App\Http\Controllers
- * @todo: remove obsolete shopping card entries
+ * @todo: remove obsolete shopping cart entries
  */
 class ScardController extends Controller
 {
