@@ -24,6 +24,7 @@ class MovieOrderShipped extends Mailable
     {
         $this->order = $order;
         $this->to($order->customer->email);
+        $this->from("BTA Project<{$order->customer->email}>");
         $this->subject('new order');
     }
 
