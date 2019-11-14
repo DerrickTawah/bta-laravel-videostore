@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,7 +21,7 @@ class Movie extends Model
      */
     public function author()
     {
-        return $this->belongsTo('App\Author');
+        return $this->belongsTo('App\Models\Author');
     }
 
     public function scopeOrdered($query)

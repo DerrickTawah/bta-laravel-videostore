@@ -6,6 +6,15 @@
             <div class="col-md-8">
                 <div class="row card-header w-100">
                     <h3>{{ $data->title }}</h3>
+                    <form class="position-absolute d-block" style="right:3.0rem"
+                              action="{{ route('scard.update', ['id' => $data->id]) }}"
+                              method="post"
+                        >
+                            @csrf
+                            <button class="btn btn-primary d-inline-block" type="submit">
+                                <i class="d-inline-block float-right fas fa-shopping-cart"></i>
+                                @lang('Add to shopping card') @if($added && $added > 0)({{ $added }})@endif</button>
+                        </form>
                 </div>
                 <div class="card-body">
                     <div class="row"><span>Author: {{ $data->author }}</span></div>

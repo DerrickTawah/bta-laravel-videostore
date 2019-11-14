@@ -24,6 +24,18 @@ class AuthorRequest extends FormRequest
     public function rules()
     {
         return [
+            'firstname' => 'required|between:3,20',
+            'lastname'  => 'required|between:3,20',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'firstname.required'   => 'Ein Vorname muß angegeben werden!',
+            'firstname.between'    => 'Der Vorname muß mindestens :min und darf maximal :max Zeichen enthalten!',
+            'lastname.required'    => 'Ein Nachname muß angegeben werden!',
+            'lastname.between'     => 'Der Nachname muß mindestens :min und darf maximal :max Zeichen enthalten!',
         ];
     }
 }
