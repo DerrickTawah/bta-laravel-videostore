@@ -13,7 +13,7 @@
                             @csrf
                             <button class="btn btn-primary d-inline-block" type="submit">
                                 <i class="d-inline-block float-right fas fa-shopping-cart"></i>
-                                @lang('Add to shopping card') @if($added && $added > 0)({{ $added }})@endif</button>
+                                @lang('Add to shopping cart') @if($added && $added > 0)({{ $added }})@endif</button>
                         </form>
                 </div>
                 <div class="card-body">
