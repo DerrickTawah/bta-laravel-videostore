@@ -63,6 +63,7 @@ class OrderController extends Controller
         $scardIds = [];
 
         if($scard->count()) {
+            // @todo: put all scard items in one order
             foreach ($scard as $item) {
                 $scardIds[] = $item->id;
                 $data = [

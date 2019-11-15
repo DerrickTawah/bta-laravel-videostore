@@ -40,6 +40,12 @@ Route::domain(env('APP_ADMIN_DOMAIN'))
         Route::get('/movie/edit/{id?}', 'AdminMovieController@edit')->name('admin-movie.edit');
         Route::post('/movie/store/{id?}', 'AdminMovieController@store')->name('admin-movie.store');
         Route::get('/movie/delete/{id}', 'AdminMovieController@delete')->name('admin-movie.delete');
+
+        Route::get('/order', 'AdminOrderController@index')->name('admin-order.index');
+        Route::get('/order/show/{id}', 'AdminOrderController@show')->name('admin-order.show');
+        Route::get('/order/edit/{id?}', 'AdminOrderController@edit')->name('admin-order.edit');
+        Route::post('/order/store/{id?}', 'AdminOrderController@store')->name('admin-order.store');
+        Route::get('/order/delete/{id}', 'AdminOrderController@delete')->name('admin-order.delete');
     });
 
 Route::get('/home', 'HomeController@index')->name('home');
