@@ -8,7 +8,7 @@
                     <div class="card-header row">@lang('Authors')</div>
                     <div class="card-body row p-0 justify-content-center">
                         @if($data->count() > 0 )
-                            <table class="table">
+                            <table class="table table-striped">
                                 <tr>
                                     <th>Name</th>
                                     <th>Filme</th>

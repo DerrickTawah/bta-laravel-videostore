@@ -1,0 +1,20 @@
+#!/bin/sh
+composer install
+npm install
+npm run dev
+
+if [ ! -f .tmp ]; then
+    echo "create .env file"
+    cp .env.local .env
+fi
+if [ ! -f .htaccess ]; then
+    echo "create .htaccess file"
+    cp htaccess-tpl .htaccess
+fi
+
+echo "clear all caches"
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+echo "all DONE :-)"

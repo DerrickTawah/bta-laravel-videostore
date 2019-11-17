@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Customer;
-use App\Models\Movie;
-use App\Models\Author;
-use App\Http\Requests\MovieRequest;
+use Carbon\Carbon;
 use App\Models\Order;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class AdminOrderController extends AdminController
 {
@@ -18,27 +15,37 @@ class AdminOrderController extends AdminController
 
     public function show( $id ) {
         $data = Order::whereId($id)->first();
-        return view('admin.order.show', compact('data'));
+        $priceTotal = 0;
+        $data->orderItems->each(function($item) use (&$priceTotal) {
+            $priceTotal += $item->price;
+        });
+        return view('admin.order.show', compact('data','priceTotal'));
     }
 
-    public function edit( $id = null ) {
-        $data = ($id > 0) ? Order::whereId($id)->first() : null;
-        $customer = Customer::orderBy('email')->get();
-        return view('admin.order.edit', compact('data','customer'));
+    public function edit( $id ) {
+        $data = Order::whereId($id)->first();
+        return view('admin.order.edit', compact('data'));
     }
 
-    public function store( Request $request, $id = null) {
-        $validated = $request->validated();
-        if( $id > 0 ) {
-            Order::whereId($id)->update($validated);
-        } else {
-            Order::create($validated);
+    public function store( Request $request, $id ) {
+        $done   = !!$request->post('done');
+        $order  = Order::whereId($id)->first();
+
+        $order->done = null;
+        $order->done_at = null;
+
+        if( true === $done ) {
+            $order->done = 1;
+            $order->done_at = Carbon::now(config('app.timezone'));
         }
-        return redirect()->route('admin-movie.index');
+        $order->save();
+        return redirect()->route('admin-order.index');
     }
 
     public function delete( $id ) {
-        Order::destroy($id);
-        return redirect()->route('admin-movie.index');
+        $order = Order::whereId($id)->first();
+        $order->orderItems()->delete();
+        $order->delete();
+        return redirect()->route('admin-order.index');
     }
 }

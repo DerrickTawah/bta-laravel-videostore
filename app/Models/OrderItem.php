@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
@@ -27,27 +26,24 @@ use Illuminate\Support\Carbon;
  * @method static Builder|OrderItem whereQuantity($value)
  * @method static Builder|OrderItem whereUpdatedAt($value)
  * @mixin Eloquent
- * @property int $price_total
- * @property int|null $done
- * @property string|null $done_at
- * @property-read Customer $customer
- * @property-read Collection|OrderItem[] $orderItems
- * @property-read int|null $order_items_count
- * @method static Builder|Order whereDone($value)
- * @method static Builder|Order whereDoneAt($value)
- * @method static Builder|Order wherePriceTotal($value)
+ * @property int $order_id
+ * @property float $price
+ * @property-read Movie $movie
+ * @property-read Order $order
+ * @method static Builder|OrderItem whereOrderId($value)
+ * @method static Builder|OrderItem wherePrice($value)
  */
-class Order extends Model
+class OrderItem extends Model
 {
-    protected $table = 'order';
-    protected $fillable = ['customer_id','price_total'];
-    protected $dates = ['created_at','updated_at','done_at'];
+    public $timestamps = false;
+    protected $table = 'order_item';
+    protected $fillable = ['order_id','movie_id','quantity','price'];
 
-    public function customer() {
-        return $this->belongsTo(Customer::class);
+    public function order() {
+        return $this->belongsTo(Order::class);
     }
 
-    public function orderItems() {
-        return $this->hasMany(OrderItem::class);
+    public function movie() {
+        return $this->belongsTo(Movie::class);
     }
 }

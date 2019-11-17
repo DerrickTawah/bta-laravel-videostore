@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Author whereLastname($value)
  * @mixin Eloquent
  * @method static Builder|Author ordered()
+ * @property-read mixed $fullname
  */
 class Author extends Model
 {

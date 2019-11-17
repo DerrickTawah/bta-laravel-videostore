@@ -27,7 +27,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarContent">
-                    <span class="mx-2 text-danger"><b>@auth Auth @else Guest @endauth</b></span>
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
@@ -37,7 +36,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav right ml-auto float-right">
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -50,11 +49,11 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('scard.index') }}">
-                                <i class="d-inline-block float-right fas fa-shopping-cart"></i>
+                                <i class="d-inline-block fas fa-shopping-cart"> </i>
                             </a>
                         </li>
 
-                        <li class="nav-item spacer d-none d-md-inline-block">&nbsp;</li>
+                        <li class="nav-item spacer d-none d-md-inline-block">&nbsp</li>
 
                         <li class="nav-item lang-switch">
                             @foreach (config('languages') as $lang => $language)
@@ -63,6 +62,7 @@
                                 <span class="nav-link pipe">|</span>
                             @endforeach
                         </li>
+
                     </ul>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckForMaintenanceMode;
+use App\Http\Middleware\Cors;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\Language;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -41,6 +42,7 @@ class Kernel extends HttpKernel
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,
+        Cors::class,
     ];
 
     /**
@@ -61,6 +63,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            'cors',
             'throttle:60,1',
             'bindings',
         ],
@@ -84,6 +87,7 @@ class Kernel extends HttpKernel
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
+        'cors' => Cors::class,
     ];
 
     /**
@@ -94,6 +98,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewarePriority = [
+        Cors::class,
         StartSession::class,
         ShareErrorsFromSession::class,
         Authenticate::class,

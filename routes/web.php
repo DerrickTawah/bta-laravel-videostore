@@ -19,7 +19,7 @@ Route::domain(env('APP_DOMAIN'))
         // public stuff
         Route::get('/movie', 'MovieController@index')->name('movie.index');
         Route::get('/movie/show/{id}', 'MovieController@show')->name('movie.show');
-        Route::get('/scard}', 'ScardController@index')->name('scard.index');
+        Route::get('/scard', 'ScardController@index')->name('scard.index');
         Route::post('/scard/update/{id}', 'ScardController@update')->name('scard.update');
         Route::post('/scard/destroy/{id}', 'ScardController@destroy')->name('scard.destroy');
         Route::post('/scard/increment/{id}', 'ScardController@increment')->name('scard.increment');

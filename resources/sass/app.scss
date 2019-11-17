@@ -18,13 +18,15 @@
 .navbar {
   &.navbar-expand-md {
     .navbar-nav {
+      &.right {
+        position: absolute;
+        right: 1.0rem;
+      }
       .nav-item {
         &.spacer {
           width: 0.8rem;
         }
         &.lang-switch {
-          position: absolute;
-          right: 1.0rem;
           margin-left: 0;
           margin-right: 0;
           padding-left: 0;

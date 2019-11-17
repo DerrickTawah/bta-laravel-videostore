@@ -21,7 +21,7 @@
                             </div>
                             @endif
 
-                            <table class="table">
+                            <table class="table table-striped">
                                 <tr>
                                     <th>Titel</th>
                                     <th class="d-none d-md-table-cell">Kategorie</th>

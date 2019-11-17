@@ -18,24 +18,22 @@
                             </div>
                             @endif
 
-                            <table class="table">
+                            <table class="table table-striped">
                                 <tr>
                                     <th class="d-none d-md-table-cell">{{ __('Customer') }}</th>
-                                    <th class="d-none d-md-table-cell">{{ __('Movie')  }}</th>
-                                    <th class="d-none d-md-table-cell">{{ __('quantity')  }}</th>
-                                    <th class="d-none d-md-table-cell">{{ __('price total') }} €</th>
-                                    <th class="d-none d-md-table-cell">{{ __('done')  }}€</th>
-                                    <th class="d-none d-md-table-cell">{{ __('done at')  }}€</th>
+                                    <th class="d-none d-md-table-cell">{{ __('price total') }}</th>
+                                    <th class="d-none d-md-table-cell">{{ __('done')  }}</th>
+                                    <th class="d-none d-md-table-cell">{{ __('done at')  }}</th>
+                                    <th class="d-none d-md-table-cell">{{ __('created at') }}</th>
                                     <th colspan="3">&nbsp&nbsp;</th>
                                 </tr>
                             @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $item->customer->email }}</td>
-                                    <td class="d-none d-md-table-cell">{{ $item->movie->title }}</td>
-                                    <td class="d-none d-md-table-cell">{{ $item->quantity }}</td>
-                                    <td class="d-none d-md-table-cell">{{ $item->price }} </td>
-                                    <td class="d-none d-md-table-cell">{{ $item->done }}</td>
-                                    <td class="d-none d-md-table-cell">@if($item->done_at){{ $item->done_at->format('d.m.Y') }}@endif</td>
+                                    <td class="d-none d-md-table-cell">{{ $item->price_total }} €</td>
+                                    <td class="d-none d-md-table-cell">@if($item->done)<i class="fas fa-hand-holding-usd"></i>@else<i class="fas fa-times text-danger">@endif</td>
+                                    <td class="d-none d-md-table-cell">@if($item->done_at){{ $item->done_at->format('d.m.Y') }}@else<i class="fas fa-times text-danger">@endif</td>
+                                    <td class="d-none d-md-table-cell">{{ $item->created_at->format('d.m.Y H:i') }}</td>
 
                                     <td><a class="btn-sm btn-primary" href="{{ route('admin-order.show', ['id' => $item->id]) }}">Show</a></td>
                                     <td><a class="btn-sm btn-primary" href="{{ route('admin-order.edit', ['id' => $item->id]) }}">Edit</a></td>

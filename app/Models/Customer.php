@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $email
  * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Order[] $orders
+ * @property-read int|null $orders_count
  * @method static Builder|Customer newModelQuery()
  * @method static Builder|Customer newQuery()
  * @method static Builder|Customer query()
@@ -21,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Customer whereEmail($value)
  * @method static Builder|Customer whereId($value)
  * @method static Builder|Customer whereName($value)
+ * @method static Builder|Customer whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class Customer extends Model
