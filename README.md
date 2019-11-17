@@ -1,7 +1,8 @@
 ## bta-laravel-videostore
 
-nach der Installation folgendes per Terminal im Projektverzeichnis ausführen:
+nach dem clonen von Github folgendes per Terminal im Projektverzeichnis ausführen:
 
+- erstelle eine MySQL Datenbank namens 'videostore' und importiere darin die SQL-Datei aus database/dump.
 - (linux, macosx) setup
 - (windows) setup.bat
 

@@ -20,5 +20,5 @@ php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 echo all DONE :-)
-echo Dont forget to make entries for the hostname in C:\Window\System32\drivers\etc\host
+echo Dont forget to make entries for the hostname in C:\Window\System32\drivers\etc\hosts
 echo and in your apache httpd-vhosts.conf file
