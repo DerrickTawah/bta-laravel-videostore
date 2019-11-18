@@ -5,23 +5,39 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card col-md-12">
-                    <div class="card-header row">@lang('Authors')</div>
+                    <div class="card-header row">
+                        <div class="col">
+                            {{ __('Authors') }}
+                        </div>
+                    </div>
                     <div class="card-body row p-0 justify-content-center">
                         @if($data->count() > 0 )
-                            <table class="table table-striped">
+                            @if( method_exists($data, 'links') )
+                            <div class="float-left col-6">
+                                {{ $data->links() }}
+                            </div>
+                            @endif
+
+                            <table class="table">
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Filme</th>
+                                    <th>@lang('Last Name')</th>
+                                    <th>@lang('First Name')</th>
                                     <th>&nbsp&nbsp;</th>
                                 </tr>
                             @foreach ($data as $item)
                                 <tr>
-                                    <td>{{ $item }}</td>
-                                    <td>{{ $item->movies->count() }}</td>
-                                    <td><a class="btn-sm btn-dark" href="{{ route('author.show', ['author' => $item->id]) }}">Show</a></td>
+                                    <td class="d-none d-md-table-cell">@if($item->lastname) {{ $item->lastname }} @endif</td>
+                                    <td class="d-none d-md-table-cell">@if($item->firstname) {{ $item->firstname }} @endif</td>
+
+                                    <td><a class="btn-sm btn-primary" href="{{ route('author.show', ['id' => $item->id]) }}">Show</a></td>
                                 </tr>
                             @endforeach
                             </table>
+                            @if( method_exists($data, 'links') )
+                            <div class="float-left col-6">
+                                {{ $data->links() }}
+                            </div>
+                            @endif
                         @else
                            <h3>Keine Daten vorhanden!</h3>
                         @endif

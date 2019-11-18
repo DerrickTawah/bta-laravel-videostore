@@ -24,6 +24,10 @@ Route::domain(env('APP_DOMAIN'))
         Route::post('/scard/destroy/{id}', 'ScardController@destroy')->name('scard.destroy');
         Route::post('/scard/increment/{id}', 'ScardController@increment')->name('scard.increment');
         Route::post('/scard/decrement/{id}', 'ScardController@decrement')->name('scard.decrement');
+
+        Route::get('/author', 'AuthorController@index')->name('author.index');
+        Route::get('/author/show/{id}', 'AuthorController@show')->name('author.show');
+
         Route::post('/order/store', 'OrderController@store')->name('order.store');
 
         Route::redirect('/', '/movie');
@@ -40,6 +44,12 @@ Route::domain(env('APP_ADMIN_DOMAIN'))
         Route::get('/movie/edit/{id?}', 'AdminMovieController@edit')->name('admin-movie.edit');
         Route::post('/movie/store/{id?}', 'AdminMovieController@store')->name('admin-movie.store');
         Route::get('/movie/delete/{id}', 'AdminMovieController@delete')->name('admin-movie.delete');
+
+        Route::get('/author', 'AdminAuthorController@index')->name('admin-author.index');
+        Route::get('/author/show/{id}', 'AdminAuthorController@show')->name('admin-author.show');
+        Route::get('/author/edit/{id?}', 'AdminAuthorController@edit')->name('admin-author.edit');
+        Route::post('/author/store/{id?}', 'AdminAuthorController@store')->name('admin-author.store');
+        Route::get('/author/delete/{id}', 'AdminAuthorController@delete')->name('admin-author.delete');
 
         Route::get('/order', 'AdminOrderController@index')->name('admin-order.index');
         Route::get('/order/show/{id}', 'AdminOrderController@show')->name('admin-order.show');

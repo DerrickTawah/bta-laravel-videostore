@@ -33,6 +33,9 @@
                             <a class="nav-link" href="{{ route('admin-movie.index') }}">{{ __('Movies') }}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin-author.index') }}">{{ __('Authors') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin-order.index') }}">{{ __('Orders') }}</a>
                         </li>
                     </ul>
