@@ -5,11 +5,26 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="row card-header w-100">
-                    <h3>{{ $data->title }}</h3>
+                    <h3>{{ __('Order from') }} {{ $data->created_at->format('d.m.Y H:i') }} {{ __('by') }} {{ $data->customer->email }}</h3>
                 </div>
-                <div class="card-body">
-                    <div class="row"><span>Author: {{ $data->author }}</span></div>
-                    <div class="row"><span>Preis: {{ $data->price }} €</span></div>
+                <div class="card-body row p-0 justify-content-center">
+                    <h5 class="my-2">{{ __('Price total') }} {{ $priceTotal }} €</h5>
+                    <table class="table table-striped">
+                        <tr>
+                            <th class="d-none d-md-table-cell">{{ __('Movie ID') }}</th>
+                            <th class="d-none d-md-table-cell">{{ __('Movie') }}</th>
+                            <th class="d-none d-md-table-cell">{{ __('Quantity')  }}</th>
+                            <th class="d-none d-md-table-cell">{{ __('price total') }}</th>
+                        </tr>
+                        @foreach ($data->orderItems as $item)
+                            <tr>
+                                <td>{{ $item->movie->id }}</td>
+                                <td>{{ $item->movie->title }}</td>
+                                <td class="d-none d-md-table-cell">{{ $item->quantity }}</td>
+                                <td class="d-none d-md-table-cell">{{ $item->price }} €</td>
+                            </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>

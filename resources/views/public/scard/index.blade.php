@@ -8,7 +8,7 @@
                     <div class="card-header row">@lang('shopping cart')</div>
                     <div class="card-body row p-0 justify-content-center">
                         @if($data->count() > 0 )
-                            <table class="table">
+                            <table class="table table-striped">
                                 <tr>
                                     <th>ID</th>
                                     <th>Movie</th>

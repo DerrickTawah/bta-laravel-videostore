@@ -13,6 +13,26 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group([
+    'middleware' => 'api',
+    'namespace' => 'API',
+    'prefix' => 'auth',
+], function ($router) {
+    Route::post('login', 'ApiAuthController@login');
+    Route::post('logout', 'ApiAuthController@logout');
+    Route::post('refresh', 'ApiAuthController@refresh');
+    Route::post('me', 'ApiAuthController@me');
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group([
+    'middleware' => 'auth:api',
+    'namespace' => 'API',
+], function ($router) {
+    Route::apiResource('movie', 'ApiMovieController');
+    Route::apiResource('author', 'ApiAuthorController');
+});
+

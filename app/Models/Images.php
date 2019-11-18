@@ -19,6 +19,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Images whereImage($value)
  * @method static Builder|Images whereMovieId($value)
  * @mixin Eloquent
+ * @property string $ext
+ * @property int $size
+ * @property int $width
+ * @property int $height
+ * @method static Builder|Images whereExt($value)
+ * @method static Builder|Images whereHeight($value)
+ * @method static Builder|Images whereSize($value)
+ * @method static Builder|Images whereWidth($value)
  */
 class Images extends Model
 {

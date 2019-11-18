@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -12,7 +12,7 @@ class MovieOrderShipped extends Mailable
 {
     use Queueable, SerializesModels;
     /**
-     * @var Order
+     * @var OrderItem
      */
     public $order;
     /**
@@ -20,7 +20,7 @@ class MovieOrderShipped extends Mailable
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct(OrderItem $order)
     {
         $this->order = $order;
         $this->to($order->customer->email);

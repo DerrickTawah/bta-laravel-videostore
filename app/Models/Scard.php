@@ -28,6 +28,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Scard whereUpdatedAt($value)
  * @mixin Eloquent
  * @property-read Movie $movie
+ * @property-read mixed $sum_price
  */
 class Scard extends Model
 {

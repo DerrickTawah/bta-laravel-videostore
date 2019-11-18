@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ScardRequest;
-use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Scard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
