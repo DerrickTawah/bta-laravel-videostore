@@ -47,7 +47,7 @@ class ApiMovieController extends Controller
      */
     public function show($id)
     {
-        $movie = Movie::whereId($id);
+        $movie = Movie::whereId($id)->get();
         return response()->json(compact('movie'));
     }
 
@@ -61,7 +61,7 @@ class ApiMovieController extends Controller
     public function update(MovieRequest $request, $id)
     {
         $validated = $request->validated();
-        $movie = Movie::whereId($id);
+        $movie = Movie::whereId($id)->get();
         $movie->update($validated);
         return response()->json(compact('movie'));
     }

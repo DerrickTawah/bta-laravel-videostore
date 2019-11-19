@@ -33,6 +33,6 @@ Route::group([
     'namespace' => 'API',
 ], function ($router) {
     Route::apiResource('movie', 'ApiMovieController');
-    Route::apiResource('author', 'ApiAuthorController');
+    Route::apiResource('author', 'ApiAuthorController')->only('index');
 });
 
