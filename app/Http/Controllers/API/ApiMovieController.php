@@ -36,7 +36,8 @@ class ApiMovieController extends Controller
     {
         $validated = $request->validated();
         $movie = Movie::create($validated);
-        return response()->json(compact('movie'));
+        $result = ['success'=>true];
+        return response()->json($result);
     }
 
     /**
