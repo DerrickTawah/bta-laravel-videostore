@@ -22,7 +22,7 @@ class ApiMovieController extends Controller
      */
     public function index()
     {
-        $data = Movie::orderBy('title')->limit(100)->with('author')->get();
+        $data = Movie::orderBy('title')->with('author')->get();
         return response()->json($data);
     }
 
