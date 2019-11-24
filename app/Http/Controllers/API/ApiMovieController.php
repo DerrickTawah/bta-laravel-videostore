@@ -48,7 +48,7 @@ class ApiMovieController extends Controller
      */
     public function show($id)
     {
-        $movie = Movie::whereId($id)->first();
+        $movie = Movie::whereId($id)->with('author')->first();
         return response()->json(compact('movie'));
     }
 
