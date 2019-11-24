@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.42-log)
 # Datenbank: videostore
-# Erstellt am: 2019-11-14 18:01:47 +0000
+# Erstellt am: 2019-11-24 14:27:31 +0000
 # ************************************************************
 
 
@@ -1165,20 +1165,6 @@ VALUES
 UNLOCK TABLES;
 
 
-# Export von Tabelle migrations
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `migrations`;
-
-CREATE TABLE `migrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-
 # Export von Tabelle movie
 # ------------------------------------------------------------
 
@@ -2311,8 +2297,6 @@ UNLOCK TABLES;
 # Export von Tabelle telescope_entries
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `telescope_entries`;
-
 CREATE TABLE `telescope_entries` (
   `sequence` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2334,8 +2318,6 @@ CREATE TABLE `telescope_entries` (
 # Export von Tabelle telescope_entries_tags
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `telescope_entries_tags`;
-
 CREATE TABLE `telescope_entries_tags` (
   `entry_uuid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2348,46 +2330,10 @@ CREATE TABLE `telescope_entries_tags` (
 # Export von Tabelle telescope_monitoring
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `telescope_monitoring`;
-
 CREATE TABLE `telescope_monitoring` (
   `tag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
-
-# Export von Tabelle users
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `users`;
-
-CREATE TABLE `users` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `api_token` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_login` datetime DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`),
-  UNIQUE KEY `user_api_token_unique` (`api_token`),
-  KEY `users_name_index` (`name`),
-  KEY `users_password_index` (`password`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `api_token`, `remember_token`, `last_login`, `created_at`, `updated_at`)
-VALUES
-	(1,'bengels','engels@goldenacker.de',NULL,'$2y$10$icMeVa8/x5yJLLV8oR9Ny.HRWyZBVn/0u/z0fMaZznGwfGZOvdcuu',NULL,'umr9ub9XvQmm2fAE466Ufv6SYI3DWbILQYOCDh3WBN4TTNnCrBn2yiqcOBF0','2019-11-12 23:49:11','2019-10-28 16:24:14','2019-11-12 23:49:11');
-
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 

@@ -43,6 +43,10 @@
                     <!-- Right Side Of Navbar -->
                     @auth
                     <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('telescope') }}">{{ __('Monitor') }}</a>
+                        </li>
                         <!-- Authentication Links -->
 
                         <li class="nav-item dropdown">

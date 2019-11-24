@@ -62,7 +62,7 @@ class ApiMovieController extends Controller
     public function update(MovieRequest $request, $id)
     {
         $validated = $request->validated();
-        $movie = Movie::whereId($id)->get();
+        $movie = Movie::whereId($id)->first();
         $movie->update($validated);
         return response()->json(compact('movie'));
     }
