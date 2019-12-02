@@ -58,5 +58,12 @@ Route::domain(env('APP_ADMIN_DOMAIN'))
         Route::get('/order/delete/{id}', 'AdminOrderController@delete')->name('admin-order.delete');
     });
 
+Route::domain(env('TELESCOPE_DOMAIN'))
+    ->middleware('auth')
+    ->group( function () {
+        // admin stuff
+//        Route::get('/', 'DashboardAdminController')->name('admin.dashboard');
+    });
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout');
