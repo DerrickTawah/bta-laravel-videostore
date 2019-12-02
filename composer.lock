@@ -4,8 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67123dcd31658346dad0288b937a72e3",
+    "content-hash": "0c4e1642fd516676122217cd97ecf68c",
     "packages": [
+        {
+            "name": "abrigham/laravel-email-exceptions",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/abrigham1/laravel-email-exceptions.git",
+                "reference": "8d4e41df19ea48f7cb83f14a32224f9c499398ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/abrigham1/laravel-email-exceptions/zipball/8d4e41df19ea48f7cb83f14a32224f9c499398ce",
+                "reference": "8d4e41df19ea48f7cb83f14a32224f9c499398ce",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "5.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Abrigham\\LaravelEmailExceptions\\EmailExceptionsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Abrigham\\LaravelEmailExceptions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Brigham",
+                    "email": "abrigham1@gmail.com"
+                }
+            ],
+            "description": "Email Exceptions from your laravel application",
+            "keywords": [
+                "debugging",
+                "email",
+                "exception",
+                "exception-handling",
+                "laravel",
+                "laravel-5-package"
+            ],
+            "time": "2019-09-03T14:25:47+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

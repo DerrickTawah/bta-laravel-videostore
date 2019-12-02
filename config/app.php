@@ -176,6 +176,7 @@ return [
          * additional services
          */
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Abrigham\LaravelEmailExceptions\EmailExceptionsServiceProvider::class,
     ],
 
     /*
