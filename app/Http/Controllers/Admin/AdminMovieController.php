@@ -10,7 +10,6 @@ class AdminMovieController extends AdminController
 {
    public function index() {
         $data = Movie::orderBy('title')->paginate(config('my.pagination_limit'));
-
         return view('admin.movie.index', compact('data'));
    }
 

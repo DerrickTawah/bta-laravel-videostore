@@ -31,14 +31,14 @@
                                 </td>
                             </tr>
 
-                            @if(app()->user())
+                            @if(Auth::user())
                             <tr>
                                 <td>
                                     <strong>User:</strong>
                                 </td>
                                 <td>
-                                    <a href="mailto:{{ app()->user()->email }}">
-                                        {{ app()->user()->email }}
+                                    <a href="mailto:{{ Auth::user()->email }}">
+                                        {{ Auth::user()->email }}
                                     </a>
                                 </td>
                             </tr>

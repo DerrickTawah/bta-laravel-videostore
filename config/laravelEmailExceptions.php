@@ -43,11 +43,11 @@ return [
     'ErrorEmail' => [
         'email' => true,
         'dontEmail' => [],
-        'throttle' => true,
+        'throttle' => false,
         'throttleCacheDriver' => env('CACHE_DRIVER', 'file'),
         'throttleDurationMinutes' => 5,
         'dontThrottle' => [],
-        'globalThrottle' => true,
+        'globalThrottle' => false,
         'globalThrottleLimit' => 20,
         'globalThrottleDurationMinutes' => 30,
         'toEmailAddress' => 'engels@goldenacker.de',
