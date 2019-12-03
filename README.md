@@ -61,6 +61,7 @@ MAIL_ENCRYPTION=null
 und in config/laravelEmailExceptions.php
 
 unbedingt den Parameter 'toEmailAddress' setzen (Eure Email-Adresse):
+
 ...
 ```
         'toEmailAddress' => 'your@mail.de',
