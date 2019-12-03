@@ -42,20 +42,9 @@ class ExampleTest extends TestCase
                 echo "\nhttp-test: $route (".$response->getStatusCode().")";
             }
             catch (Exception $e) {
-                try {
-                    $response = $this
-                        ->actingAs($user,'web')
-                        ->followingRedirects()
-                        ->get($route)
-                    ;
-                    $response->assertStatus(200);
-                    echo "\nhttp-test: $route (".$response->getStatusCode().")";
-
-                } catch(Exception $ee) {
-                    echo "\nerror on $route: " . $e->getMessage();
-                }
                 echo "\nerror on $route: " . $e->getMessage();
             }
+
         }
     }
 }

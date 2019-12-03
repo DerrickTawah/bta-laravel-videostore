@@ -48,6 +48,14 @@ class Movie extends Model
         return $this->belongsTo('App\Models\Author');
     }
 
+    /**
+     * @return BelongsTo
+     */
+    public function orderItems()
+    {
+        return $this->hasMany('App\Models\OrderItems');
+    }
+
     public function scopeOrdered($query)
     {
         return $query->orderBy('title', 'asc');

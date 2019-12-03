@@ -38,6 +38,7 @@ class OrderItem extends Model
     public $timestamps = false;
     protected $table = 'order_item';
     protected $fillable = ['order_id','movie_id','quantity','price'];
+    protected $with = ['movie'];
 
     public function order() {
         return $this->belongsTo(Order::class);

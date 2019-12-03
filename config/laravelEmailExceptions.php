@@ -50,8 +50,8 @@ return [
         'globalThrottle' => true,
         'globalThrottleLimit' => 20,
         'globalThrottleDurationMinutes' => 30,
-        'toEmailAddress' => null,
-        'fromEmailAddress' => null,
-        'emailSubject' => null
+        'toEmailAddress' => 'engels@goldenacker.de',
+        'fromEmailAddress' => 'kurs@goldenacker.de',
+        'emailSubject' => 'videostore error'
     ]
 ];

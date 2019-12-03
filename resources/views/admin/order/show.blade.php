@@ -17,12 +17,14 @@
                             <th class="d-none d-md-table-cell">{{ __('price total') }}</th>
                         </tr>
                         @foreach ($data->orderItems as $item)
+                            @if($item->movie)
                             <tr>
                                 <td>{{ $item->movie->id }}</td>
                                 <td>{{ $item->movie->title }}</td>
                                 <td class="d-none d-md-table-cell">{{ $item->quantity }}</td>
                                 <td class="d-none d-md-table-cell">{{ $item->price }} €</td>
                             </tr>
+                            @endif
                         @endforeach
                     </table>
                 </div>
