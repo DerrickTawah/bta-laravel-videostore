@@ -30,6 +30,20 @@
                                     {!! Request::fullUrl() !!}
                                 </td>
                             </tr>
+
+                            @if(app()->user())
+                            <tr>
+                                <td>
+                                    <strong>User:</strong>
+                                </td>
+                                <td>
+                                    <a href="mailto:{{ app()->user()->email }}">
+                                        {{ app()->user()->email }}
+                                    </a>
+                                </td>
+                            </tr>
+                            @endif
+
                             <tr>
                                 <td>
                                     <strong>Exception Class:</strong>
