@@ -42,3 +42,27 @@ https://www.getpostman.com/
 
 Wenn installiert, dann kannst Du hier die zu testenden Requests anlegen und ausführen:
 ![Postman](./postman.jpg)
+
+#### Fehlermeldungen per Email
+
+Installations Schritte:
+https://github.com/abrigham1/laravel-email-exceptions
+
+Für Mailversand in der .env Datei gültige SMTP Werte eintragen. z.B:
+
+```
+MAIL_DRIVER=smtp
+MAIL_HOST=goldenacker.de
+MAIL_PORT=25
+MAIL_USERNAME=kurs@goldenacker.de
+MAIL_PASSWORD=bta2019X
+MAIL_ENCRYPTION=null
+```
+und in config/laravelEmailExceptions.php
+
+unbedingt den Parameter 'toEmailAddress' setzen (Eure Email-Adresse):
+...
+```
+        'toEmailAddress' => 'your@mail.de',
+```
+...
